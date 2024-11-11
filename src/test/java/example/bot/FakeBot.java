@@ -13,12 +13,6 @@ public class FakeBot implements Bot {
      */
     private final List<String> messages = new ArrayList<>();
 
-    /**
-     * Отправка сообщения пользователю
-     *
-     * @param chatId  идентификатор чата
-     * @param message текст сообщения
-     */
     @Override
     public void sendMessage(Long chatId, String message) {
         messages.add(message);

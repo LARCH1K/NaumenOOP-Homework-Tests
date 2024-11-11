@@ -41,9 +41,11 @@ public class BotLogicTest {
     void testProcessCommandTestCommandCorrectAndIncorrectAnswer() {
         botLogic.processCommand(user, "/test");
 
+        Assertions.assertEquals("Вычислите степень: 10^2", bot.getMessage(0));
         botLogic.processCommand(user, "100");
         Assertions.assertEquals("Правильный ответ!", bot.getMessage(1));
 
+        Assertions.assertEquals("Сколько будет 2 + 2 * 2", bot.getMessage(2));
         botLogic.processCommand(user, "8");
         Assertions.assertEquals("Вы ошиблись, верный ответ: 6", bot.getMessage(3));
     }
