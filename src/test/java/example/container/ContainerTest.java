@@ -30,8 +30,8 @@ public class ContainerTest {
         Assertions.assertEquals(0, container.size());
 
         Item item = new Item(1);
-        container.add(item);
 
+        Assertions.assertTrue(container.add(item));
         Assertions.assertEquals(1, container.size());
         Assertions.assertEquals(item, container.get(0));
     }
@@ -48,8 +48,8 @@ public class ContainerTest {
 
         Assertions.assertEquals(2, container.size());
 
-        container.remove(item);
 
+        Assertions.assertTrue(container.remove(item));
         Assertions.assertEquals(1, container.size());
         Assertions.assertFalse(container.contains(item));
         Assertions.assertTrue(container.contains(item2));
