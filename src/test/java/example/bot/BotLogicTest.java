@@ -51,6 +51,38 @@ public class BotLogicTest {
     }
 
     /**
+     * Тестирование команды /test на обработку корректных ответов
+     */
+    @Test
+    void testProcessCommandTestCommandCorrectAnswers() {
+        botLogic.processCommand(user, "/test");
+
+        Assertions.assertEquals("Вычислите степень: 10^2", bot.getMessage(0));
+        botLogic.processCommand(user, "100");
+        Assertions.assertEquals("Правильный ответ!", bot.getMessage(1));
+
+        Assertions.assertEquals("Сколько будет 2 + 2 * 2", bot.getMessage(2));
+        botLogic.processCommand(user, "6");
+        Assertions.assertEquals("Правильный ответ!", bot.getMessage(3));
+    }
+
+    /**
+     * Тестирование команды /test на обработку некорректных ответов
+     */
+    @Test
+    void testProcessCommandTestCommandIncorrectAnswers() {
+        botLogic.processCommand(user, "/test");
+
+        Assertions.assertEquals("Вычислите степень: 10^2", bot.getMessage(0));
+        botLogic.processCommand(user, "99");
+        Assertions.assertEquals("Вы ошиблись, верный ответ: 100", bot.getMessage(1));
+
+        Assertions.assertEquals("Сколько будет 2 + 2 * 2", bot.getMessage(2));
+        botLogic.processCommand(user, "8");
+        Assertions.assertEquals("Вы ошиблись, верный ответ: 6", bot.getMessage(3));
+    }
+
+    /**
      * Тестирование команды /notify с ожиданием в 1 секунду
      */
     @Test
